@@ -188,7 +188,7 @@ you are love. 💖`,
           </div>
           
           <div class="print-footer">
-            Made with 💝 for someone special
+            Made with 💝 for ${name}
           </div>
         </div>
       </body>
