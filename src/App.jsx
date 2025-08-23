@@ -43,8 +43,8 @@ Under heaven itself, there is none like you.
 You are not just beautiful,
 you are beauty 
 and you are not just loved,
-you are love. 💖
-``${userName}, I do not just miss you with my heart; I miss you with the entire universe of my being. My eyes miss the light you bring into a room, my hands miss the map of yours, my ears miss the symphony of your breath as you sleep. I am not just a person longing for another; I am a constellation of a thousand tiny aches, each one a testament to a part of me that only you can make whole again. 🌌`,
+you are love. 💖`,
+      `${userName}, I do not just miss you with my heart; I miss you with the entire universe of my being. My eyes miss the light you bring into a room, my hands miss the map of yours, my ears miss the symphony of your breath as you sleep. I am not just a person longing for another; I am a constellation of a thousand tiny aches, each one a testament to a part of me that only you can make whole again. 🌌`,
       `My darling ${userName}, Loving you is not a single chapter in my story; it is the ink that has bled into every page that came before and the hand that will guide the pen for every page to come. It has rewritten my past, making sense of every heartache and wrong turn, because they all led to you. And it authors my future, painting every dream, every hope, and every quiet morning in the golden hue of your name. 📖`,
       `To you my precious ${userName}, You are not a missing piece I was searching for, for I was never a broken puzzle. You are a whole new color I never knew existed, and now that I have seen it, my entire world is painted in its hue. You didn't complete me; you expanded me. You gave my soul new dimensions and my heart a new rhythm, and I am forever changed, not because I was lacking, but because I have been given the magnificent gift of knowing you. 🎨`,
       `To ${userName}, my love for you grows stronger with each passing day. 🌹`,
