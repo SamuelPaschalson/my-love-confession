@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const LoveGreetingApp = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const printRef = useRef();
 
   const generateLoveMessage = (userName) => {
     const messages = [
@@ -22,7 +23,7 @@ in every tomorrow I dream of with you in it. 💖
 You are not just beautiful 
 you are the reason beauty exists in my eyes.
 And you are not just loved 
-you are the reason I have learned what true love feels like. 🌹
+you are the reason I have learned what true love feels like. 🌹
 `,
       `${userName}, your beauty is not bound by mirrors,
 it glows from the kindness in your soul,
@@ -43,7 +44,7 @@ Under heaven itself, there is none like you.
 You are not just beautiful,
 you are beauty 
 and you are not just loved,
-you are love. 💖`,
+you are love. 💖`,
       `${userName}, I do not just miss you with my heart; I miss you with the entire universe of my being. My eyes miss the light you bring into a room, my hands miss the map of yours, my ears miss the symphony of your breath as you sleep. I am not just a person longing for another; I am a constellation of a thousand tiny aches, each one a testament to a part of me that only you can make whole again. 🌌`,
       `My darling ${userName}, Loving you is not a single chapter in my story; it is the ink that has bled into every page that came before and the hand that will guide the pen for every page to come. It has rewritten my past, making sense of every heartache and wrong turn, because they all led to you. And it authors my future, painting every dream, every hope, and every quiet morning in the golden hue of your name. 📖`,
       `To you my precious ${userName}, You are not a missing piece I was searching for, for I was never a broken puzzle. You are a whole new color I never knew existed, and now that I have seen it, my entire world is painted in its hue. You didn't complete me; you expanded me. You gave my soul new dimensions and my heart a new rhythm, and I am forever changed, not because I was lacking, but because I have been given the magnificent gift of knowing you. 🎨`,
@@ -74,139 +75,23 @@ you are love. 💖`,
     setSubmitted(false);
     setMessage("");
   };
+
   const handlePrint = () => {
-    const printContent = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Love Message for ${name}</title>
-        <style>
-          @media print {
-            body {
-              margin: 0;
-              padding: 20px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              min-height: 100vh;
-              background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%) !important;
-              -webkit-print-color-adjust: exact;
-              print-color-adjust: exact;
-            }
-            .print-card {
-              width: 100%;
-              max-width: 400px;
-              background: white !important;
-              border-radius: 24px;
-              overflow: hidden;
-              border: 8px solid white;
-              box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-              -webkit-print-color-adjust: exact;
-              print-color-adjust: exact;
-            }
-            .print-header {
-              background: linear-gradient(to right, #ec4899 0%, #f472b6 100%) !important;
-              padding: 24px;
-              text-align: center;
-              position: relative;
-              -webkit-print-color-adjust: exact;
-              print-color-adjust: exact;
-            }
-            .print-header h1 {
-              color: white !important;
-              font-size: 28px;
-              font-weight: bold;
-              margin: 0;
-            }
-            .print-header p {
-              color: #fbcfe8 !important;
-              margin: 8px 0 0 0;
-            }
-            .print-content {
-              padding: 32px;
-              text-align: center;
-            }
-            .print-message {
-              background: #fdf2f8 !important;
-              border: 1px solid #fbcfe8;
-              border-radius: 16px;
-              padding: 24px;
-              position: relative;
-              margin-bottom: 24px;
-              -webkit-print-color-adjust: exact;
-              print-color-adjust: exact;
-            }
-            .print-message p {
-              color: #831843 !important;
-              font-size: 18px;
-              font-style: italic;
-              font-weight: 500;
-              margin: 0;
-            }
-            .heart-decoration {
-              font-size: 40px;
-              margin-bottom: 16px;
-              animation: none;
-            }
-            .print-footer {
-              background: #fce7f3 !important;
-              padding: 16px;
-              text-align: center;
-              color: #ec4899 !important;
-              font-size: 14px;
-              -webkit-print-color-adjust: exact;
-              print-color-adjust: exact;
-            }
-            .no-print {
-              display: none !important;
-            }
-            @page {
-              margin: 0;
-              size: auto;
-            }
-          }
-        </style>
-      </head>
-      <body>
-        <div class="print-card">
-          <div class="print-header">
-            <div style="position: absolute; top: 16px; left: 16px; font-size: 24px; color: white;">💖</div>
-            <div style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: white;">💖</div>
-            <h1>Love Greetings</h1>
-            <p>Your personal love message</p>
-          </div>
-          
-          <div class="print-content">
-            <div class="heart-decoration">💖</div>
-            <h2 style="font-size: 24px; font-weight: bold; color: #be185d; margin-bottom: 16px;">For ${name}</h2>
-            
-            <div class="print-message">
-              <div style="position: absolute; top: 8px; left: 8px; font-size: 24px; color: #f9a8d4;">❝</div>
-              <div style="position: absolute; bottom: 8px; right: 8px; font-size: 24px; color: #f9a8d4;">❞</div>
-              <p>${message}</p>
-            </div>
-          </div>
-          
-          <div class="print-footer">
-            Made with 💝 for ${name}
-          </div>
-        </div>
-      </body>
-      </html>
-    `;
-
-    const printWindow = window.open("", "_blank");
-    printWindow.document.write(printContent);
-    printWindow.document.close();
-
-    // Wait for content to load before printing
-    printWindow.onload = function () {
-      printWindow.focus();
-      printWindow.print();
-      printWindow.onafterprint = function () {
-        printWindow.close();
-      };
-    };
+    const printContent = document.getElementById("print-content").innerHTML;
+    const originalContent = document.body.innerHTML;
+    
+    document.body.innerHTML = printContent;
+    
+    // Add a small delay to ensure content is rendered before printing
+    setTimeout(() => {
+      window.print();
+      
+      // Restore original content after printing
+      setTimeout(() => {
+        document.body.innerHTML = originalContent;
+        window.location.reload(); // Refresh to restore React functionality
+      }, 10);
+    }, 100);
   };
 
   return (
@@ -301,6 +186,166 @@ you are love. 💖`,
             Made with 💝 for {name || "You"}
           </div>
         </div>
+      </div>
+
+      {/* Hidden print content */}
+      <div id="print-content" style={{ display: "none" }}>
+        <div className="print-card">
+          <div className="print-header">
+            <div className="print-heart-left">💖</div>
+            <div className="print-heart-right">💖</div>
+            <h1>Love Greetings</h1>
+            <p>Your personal love message</p>
+          </div>
+          
+          <div className="print-content">
+            <div className="heart-decoration">💖</div>
+            <h2>For {name}</h2>
+            
+            <div className="print-message">
+              <div className="quote-top">❝</div>
+              <div className="quote-bottom">❞</div>
+              <p>{message}</p>
+            </div>
+          </div>
+          
+          <div className="print-footer">
+            Made with 💝 for {name}
+          </div>
+        </div>
+
+        <style>
+          {`
+            @media print {
+              body, html {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              .print-card {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+                background: white !important;
+                border-radius: 24px;
+                overflow: hidden;
+                border: 8px solid white;
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              .print-header {
+                background: linear-gradient(to right, #ec4899 0%, #f472b6 100%) !important;
+                padding: 24px;
+                text-align: center;
+                position: relative;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              .print-header h1 {
+                color: white !important;
+                font-size: 28px;
+                font-weight: bold;
+                margin: 0;
+              }
+              
+              .print-header p {
+                color: #fbcfe8 !important;
+                margin: 8px 0 0 0;
+              }
+              
+              .print-heart-left, .print-heart-right {
+                position: absolute;
+                top: 16px;
+                font-size: 24px;
+                color: white;
+              }
+              
+              .print-heart-left {
+                left: 16px;
+              }
+              
+              .print-heart-right {
+                right: 16px;
+              }
+              
+              .print-content {
+                padding: 32px;
+                text-align: center;
+              }
+              
+              .print-message {
+                background: #fdf2f8 !important;
+                border: 1px solid #fbcfe8;
+                border-radius: 16px;
+                padding: 24px;
+                position: relative;
+                margin-bottom: 24px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              .print-message p {
+                color: #831843 !important;
+                font-size: 18px;
+                font-style: italic;
+                font-weight: 500;
+                margin: 0;
+                white-space: pre-line;
+              }
+              
+              .heart-decoration {
+                font-size: 40px;
+                margin-bottom: 16px;
+              }
+              
+              .quote-top, .quote-bottom {
+                position: absolute;
+                font-size: 24px;
+                color: #f9a8d4;
+              }
+              
+              .quote-top {
+                top: 8px;
+                left: 8px;
+              }
+              
+              .quote-bottom {
+                bottom: 8px;
+                right: 8px;
+              }
+              
+              .print-content h2 {
+                font-size: 24px;
+                font-weight: bold;
+                color: #be185d;
+                margin-bottom: 16px;
+              }
+              
+              .print-footer {
+                background: #fce7f3 !important;
+                padding: 16px;
+                text-align: center;
+                color: #ec4899 !important;
+                font-size: 14px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              @page {
+                margin: 0;
+                size: auto;
+              }
+            }
+          `}
+        </style>
       </div>
     </div>
   );
