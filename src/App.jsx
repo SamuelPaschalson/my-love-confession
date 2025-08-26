@@ -79,6 +79,10 @@ you are love. 💖`,
   const handlePrint = () => {
     const printContent = document.getElementById("print-content").innerHTML;
     const originalContent = document.body.innerHTML;
+    const originalTitle = document.title;
+    
+    // Set the document title for the print file name
+    document.title = `Love message for ${name}`;
     
     document.body.innerHTML = printContent;
     
@@ -89,6 +93,7 @@ you are love. 💖`,
       // Restore original content after printing
       setTimeout(() => {
         document.body.innerHTML = originalContent;
+        document.title = originalTitle;
         window.location.reload(); // Refresh to restore React functionality
       }, 10);
     }, 100);
@@ -190,27 +195,29 @@ you are love. 💖`,
 
       {/* Hidden print content */}
       <div id="print-content" style={{ display: "none" }}>
-        <div className="print-card">
-          <div className="print-header">
-            <div className="print-heart-left">💖</div>
-            <div className="print-heart-right">💖</div>
-            <h1>Love Greetings</h1>
-            <p>Your personal love message</p>
-          </div>
-          
-          <div className="print-content">
-            <div className="heart-decoration">💖</div>
-            <h2>For {name}</h2>
-            
-            <div className="print-message">
-              <div className="quote-top">❝</div>
-              <div className="quote-bottom">❞</div>
-              <p>{message}</p>
+        <div className="print-container">
+          <div className="print-card">
+            <div className="print-header">
+              <div className="print-heart-left">💖</div>
+              <div className="print-heart-right">💖</div>
+              <h1>Love Greetings</h1>
+              <p>Your personal love message</p>
             </div>
-          </div>
-          
-          <div className="print-footer">
-            Made with 💝 for {name}
+            
+            <div className="print-content">
+              <div className="heart-decoration">💖</div>
+              <h2>For {name}</h2>
+              
+              <div className="print-message">
+                <div className="quote-top">❝</div>
+                <div className="quote-bottom">❞</div>
+                <p>{message}</p>
+              </div>
+            </div>
+            
+            <div className="print-footer">
+              Made with 💝 for {name}
+            </div>
           </div>
         </div>
 
@@ -225,12 +232,22 @@ you are love. 💖`,
                 background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%) !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              
+              .print-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
               }
               
               .print-card {
                 width: 100%;
                 max-width: 400px;
-                margin: 0 auto;
                 background: white !important;
                 border-radius: 24px;
                 overflow: hidden;
